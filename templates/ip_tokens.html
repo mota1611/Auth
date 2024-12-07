@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tokens do IP {{ ip }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #2c3e50; }
+        ul { list-style-type: none; padding: 0; }
+        li { margin-bottom: 10px; }
+        strong { color: #2980b9; }
+    </style>
+</head>
+<body>
+    <h1>Tokens vinculados ao IP: {{ ip }}</h1>
+    <ul>
+    {% for owner, tokens in tokens_data.items() %}
+        <li><strong>Dono: {{ owner }}</strong>
+            <ul>
+            {% for token, details in tokens.items() %}
+                <li>Token: {{ token }}</li>
+                <ul>
+                    <li>Criado em: {{ details.created_at }}</li>
+                    <li>Expira em: {{ details.expires_at }}</li>
+                    <li>IP Vinculado: {{ details.bound_ip }}</li>
+                </ul>
+            {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
