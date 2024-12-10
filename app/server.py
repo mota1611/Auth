@@ -10,7 +10,6 @@ TOKENS_DIR = "storage/tokens"
 
 @app.route('/')
 def home():
-    """Página inicial simples."""
     return render_template("home.html")
 
 @app.route('/tokens', methods=['GET'])
@@ -27,7 +26,6 @@ def list_all_tokens():
 
 @app.route('/tokens/view/<filename>', methods=['GET'])
 def view_token_file(filename):
-    """Exibe o conteúdo de um arquivo de token específico."""
     filepath = os.path.join(TOKENS_DIR, filename)
 
     if os.path.exists(filepath) and filename.endswith("Token.json"):
@@ -39,7 +37,6 @@ def view_token_file(filename):
 
 @app.route('/tokens/<ip>', methods=['GET'])
 def view_tokens(ip):
-    """Exibe tokens associados ao IP informado."""
     tokens_data = {}
 
     for filename in os.listdir(TOKENS_DIR):
@@ -65,7 +62,6 @@ def view_tokens(ip):
 
 @app.route('/validate', methods=['POST'])
 def validate():
-    """Valida um token recebido do cliente."""
     token = request.headers.get("Authorization")
     client_ip = request.remote_addr
 
@@ -116,7 +112,6 @@ def validate():
     return jsonify({"status": "invalid", "message": "Token inválido ou não encontrado."}), 403
 
 def start_server():
-    """Inicia o servidor Flask."""
     print("Servidor iniciado em http://0.0.0.0:5000")
     app.run(host="0.0.0.0", port=5000)
 
