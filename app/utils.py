@@ -3,7 +3,6 @@ import json
 from config.settings import TOKENS_DIR
 
 def load_tokens(owner_name=None):
-    """Carrega tokens para um dono específico ou todos os tokens."""
     tokens = {}
     if owner_name:
         filepath = os.path.join(TOKENS_DIR, f"{owner_name}Token.json")
@@ -20,13 +19,11 @@ def load_tokens(owner_name=None):
     return tokens
 
 def save_tokens(owner_name, tokens):
-    """Salva os tokens no arquivo JSON do respectivo dono."""
     filepath = os.path.join(TOKENS_DIR, f"{owner_name}Token.json")
     with open(filepath, "w") as file:
         json.dump(tokens, file, indent=4)
 
 def delete_token(owner_name, token):
-    """Deleta um token específico de um dono."""
     tokens = load_tokens(owner_name)
     if token in tokens:
         del tokens[token]
