@@ -4,7 +4,7 @@ from datetime import datetime
 from flask import Flask, request, jsonify, render_template
 from app.utils import load_tokens, save_tokens, delete_token
 
-app = Flask(__name__, template_folder="C:/Users/Akashivlrx/Desktop/Projects/Develloper/Autopass/Server QRCodeProcess/templates")
+app = Flask(__name__, template_folder="")
 
 TOKENS_DIR = "storage/tokens"
 
