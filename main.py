@@ -7,7 +7,6 @@ def clear_console():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def select_owner_and_token():
-    """Lista todos os donos e tokens para seleção."""
     tokens = list_tokens()
     if not tokens:
         print("Nenhum token encontrado.")
